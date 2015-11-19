@@ -11,12 +11,21 @@ var LinkedList = function() {
       list.tail = newTail;
     }
     else {
+<<<<<<< HEAD
       while(temp.next !== null) {
         temp = temp.next;
       }
       temp.next = newTail;
       list.tail = newTail;
     }
+=======
+    while(temp.next !== null) {
+      temp = temp.next;
+    }
+    temp.next = newTail;
+    list.tail = newTail;
+  }
+>>>>>>> 0dd53f84ec682cecf13ff4d6eb7fc4912915055e
   };
 
   list.removeHead = function() {
