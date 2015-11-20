@@ -11,7 +11,6 @@ var Graph = function() {
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this.nodes.push(node);
-  console.log(this.nodes);
 };
 
 // ------------------------
@@ -27,6 +26,13 @@ Graph.prototype.removeNode = function(node) {
   var index = _.indexOf(this.nodes, node);
   if (index > -1){
     this.nodes.splice(index, 1);
+  }
+
+  //when we remove a node, we remove all the edges that connected to it
+  for (var i = 0; i < this.edges.length; i++) {
+    if (_.contains(this.edges[i], node)) {
+      this.edges.splice(i, 1);
+    }
   }
 };
 
@@ -55,9 +61,10 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  var indexFor = _.indexOf(this.edges, [fromNode, toNode]);
+  //var indexFor = _.indexOf(this.edges, [fromNode, toNode]);
   for (var i = 0; i < this.edges.length; i++) {
-    if (_.isEqual(this.edges[i], [fromNode, toNode])) {
+    //undirected graph, so we check in either order
+    if (_.isEqual(this.edges[i], [fromNode, toNode]) || _.isEqual(this.edges[i], [toNode, fromNode])) {
       this.edges.splice(i, 1);
     }
   }

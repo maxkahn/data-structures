@@ -31,12 +31,12 @@ binarysearchmethods.insert = function(value) {
 binarysearchmethods.contains = function(value) {
   var contained = false;
   if (this.value === value) {
-    return true;
+    contained = true;
   }
- if (this.left !== null ) {
+ else if (this.left !== null && this.left.value >= value ) {
         contained = contained || this.left.contains(value);
  }
- if (this.right !== null){
+ else if (this.right !== null && this.right.value <= value){
       contained = contained || this.right.contains(value);
   }
   return contained;
