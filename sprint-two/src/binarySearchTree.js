@@ -29,10 +29,29 @@ binarysearchmethods.insert = function(value) {
 };
 
 binarysearchmethods.contains = function(value) {
-  
+  var contained = false;
+  if (this.value === value) {
+    return true;
+  }
+ if (this.left !== null ) {
+        contained = contained || this.left.contains(value);
+ }
+ if (this.right !== null){
+      contained = contained || this.right.contains(value);
+  }
+  return contained;
 };
 
-binarysearchmethods.depthFirstLog = function(callback) {};
+binarysearchmethods.depthFirstLog = function(callback) {
+  console.log(this.value);
+  callback(this.value);
+  if (this.left !== null) {
+    this.left.depthFirstLog(callback);
+  }
+  if (this.right !== null) {
+    this.right.depthFirstLog(callback);
+  }
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
