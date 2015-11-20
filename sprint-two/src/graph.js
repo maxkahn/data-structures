@@ -46,38 +46,25 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
     });
 };
 
+
+
+// ------------------------
+// Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
   this.edges.push([fromNode, toNode]);
   //console.log(this.edges);
 };
 
-// ------------------------
-// Connects two nodes in a graph by adding an edge between them.
-/*Graph.prototype.addEdge = function(fromNode, toNode) {
-  //var fromIndex = _.indexOf(this.nodes, fromNode)
-  this.edges.push([fromNode, toNode]);
-};*/
 
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  //var indexFor = _.indexOf(this.edges, [fromNode, toNode]);
   for (var i = 0; i < this.edges.length; i++) {
     //undirected graph, so we check in either order
     if (_.isEqual(this.edges[i], [fromNode, toNode]) || _.isEqual(this.edges[i], [toNode, fromNode])) {
       this.edges.splice(i, 1);
     }
   }
-
-  /*if (indexFor > -1){
-    this.edges.splice(indexFor, 1);
-  }
-  console.log(indexFor);
-  var indexBack = _.indexOf(this.edges, [toNode, fromNode]);
-  if (indexBack > -1){
-    this.edges.splice(indexBack, 1);
-  }
-  console.log(indexBack);*/
 };
 
 // ------------------------

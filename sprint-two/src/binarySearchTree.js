@@ -34,10 +34,10 @@ binarysearchmethods.contains = function(value) {
     contained = true;
   }
  else if (this.left !== null && this.left.value >= value ) {
-        contained = contained || this.left.contains(value);
+    return this.left.contains(value);
  }
  else if (this.right !== null && this.right.value <= value){
-      contained = contained || this.right.contains(value);
+    return this.right.contains(value);
   }
   return contained;
 };
