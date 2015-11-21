@@ -19,11 +19,9 @@ treeMethods.addChild = function(value) {
   }  // fix me
     //this.parent = this;
     this.children.push(childTree);
-    /*if (this.parent == null) {
+    
 
-    }*/
-    //else {
-      childTree.parent = this;
+ childTree.parent = this;
     //}
 };
 
@@ -43,13 +41,26 @@ treeMethods.contains = function(target) {
 
 treeMethods.removeParent = function(target) {
   //target is the value of the node to be dissassociated
-  var subTree;
+  //var subTree;
+
   if(this.value === target){
     var parentTree = this.parent;
     this.parent = null;
     //subTree = this;
-    parentTree.children
+    for(var i = 0; i < parentTree.children.length; i++){
+     if(parentTree.children[i].value === target){
+      parentTree.children.splice(i, 1);
+     } 
+    }
   }
+    else{
+      if(this.children !== null){
+        for(var i = 0; this.children.length; i++){
+          this.children[i].removeParent(target);
+        }
+      }
+    }
+  };
 
 
   //copy value to variable
@@ -59,7 +70,7 @@ treeMethods.removeParent = function(target) {
 
 
   //return new tree;
-};
+//};
 
 
 /*
