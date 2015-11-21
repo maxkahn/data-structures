@@ -21,14 +21,22 @@ var doublyLinkedList = function() {
     }
   };
 
-  list.removeHead = function(value) {
+  list.removeHead = function() {
     //find what will be the nextHead
     //update the head property on our DLL
     //set the next property on our nextHead to be the past head
     //set 
-    var temp = list.head;
-    delete list.head;
-    list.head = temp.next;
+    if(list.head === list.tail){
+      //list.tail = null;
+      delete list.head;
+      delete list.tail;
+      list.head = list.tail = null;
+    }
+    else{
+      var temp = list.head;
+      delete list.head;
+      list.head = temp.next;
+    }
 
   };
 
