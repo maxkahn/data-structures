@@ -14,6 +14,13 @@ describe('tree', function() {
   it('should add children to the tree', function() {
     tree.addChild(5);
     expect(tree.children[0].value).to.equal(5);
+    expect(tree.parent).to.equal(null);
+  });
+
+  it('should add a parent to each child', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(4);
+    expect(tree.children[0].children[0].parent.value).to.equal(1);
   });
 
   it('should return true for a value that the tree contains', function(){

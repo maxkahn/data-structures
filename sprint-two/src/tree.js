@@ -1,6 +1,7 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
+  newTree.parent = null;
 
   // your code here
   newTree.children = null;  // fix me
@@ -16,8 +17,14 @@ treeMethods.addChild = function(value) {
   if(this.children === null){
     this.children = [];
   }  // fix me
-
+    //this.parent = this;
     this.children.push(childTree);
+    /*if (this.parent == null) {
+
+    }*/
+    //else {
+      childTree.parent = this;
+    //}
 };
 
 treeMethods.contains = function(target) {
@@ -33,6 +40,26 @@ treeMethods.contains = function(target) {
   return isFound;
 };
 
+
+treeMethods.removeParent = function(target) {
+  //target is the value of the node to be dissassociated
+  var subTree;
+  if(this.value === target){
+    var parentTree = this.parent;
+    this.parent = null;
+    //subTree = this;
+    parentTree.children
+  }
+
+
+  //copy value to variable
+
+  //delete value
+  //remove subtree connected to value
+
+
+  //return new tree;
+};
 
 
 /*
