@@ -55,7 +55,7 @@ treeMethods.removeParent = function(target) {
   }
     else{
       if(this.children !== null){
-        for(var i = 0; this.children.length; i++){
+        for(var i = 0; i < this.children.length; i++){
           this.children[i].removeParent(target);
         }
       }
