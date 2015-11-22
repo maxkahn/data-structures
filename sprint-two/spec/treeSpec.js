@@ -57,4 +57,18 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(false);
   });
 
+  it('should invoke a callback on all nodes', function() {
+    tree.addChild(1);
+    tree.children[0].addChild(2);
+    tree.children[0].addChild(4);
+    tree.addChild(3);
+    tree.children[1].addChild(5);
+    tree.children[1].addChild(7);
+    tree.traverse(function(tr) {
+      tr.value++;
+    });
+    expect(tree.contains(8)).to.equal(true);
+    expect(tree.contains(1)).to.equal(false);
+  });
+
 });

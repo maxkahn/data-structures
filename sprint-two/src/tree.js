@@ -62,16 +62,17 @@ treeMethods.removeParent = function(target) {
     }
   };
 
+treeMethods.traverse = function(cb){
+    //cb takes a tree as its argument;
+    //we can modify the code later for cb to take a value
+  cb(this);
+  if(this.children !== null){
+    for (var i = 0; i < this.children.length; i++) {
+      this.children[i].traverse(cb);
+    }
+  }
 
-  //copy value to variable
-
-  //delete value
-  //remove subtree connected to value
-
-
-  //return new tree;
-//};
-
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
